@@ -10,6 +10,8 @@ if(localStorage.getItem("theme")){
     var theme = "light";
     body.classList.add(theme);
   }
+} else {
+  body.classList.add('light');
 }
 
 toggleButton.addEventListener('click', () => {
