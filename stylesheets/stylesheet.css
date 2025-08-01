@@ -35,7 +35,7 @@ a {
   }
 }
 
-body.light-mode {
+body.light {
   background-color: #f4f4f4;
   color: #333;
   text-align: center;
@@ -62,7 +62,7 @@ body.light-mode {
   }
 }
 
-body.dark-mode {
+body.dark {
   background-color: #1A1A1A;
   text-align: center;
   .page-header {
