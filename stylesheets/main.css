@@ -86,3 +86,12 @@ body.dark .site-footer a {
 body.dark .site-footer-owner {
   color: #aaa;
 }
+body.dark .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+body.dark .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+}
