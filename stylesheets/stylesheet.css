@@ -36,6 +36,10 @@ a {
   }
 }
 
+.project {
+  margin-bottom: 1rem;
+}
+
 body.light {
   background-color: #f8fafc;
   color: #334155;
