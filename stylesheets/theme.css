@@ -1,0 +1,291 @@
+/*
+  Theme colours and fonts.
+  Light is the default; .dark on <html> switches to the 80s neon theme.
+  To change a colour, edit it here — stylesheet.css only uses these variables.
+  All text colours meet WCAG AA (4.5:1) against --bg and --surface.
+*/
+
+:root {
+  color-scheme: light;
+
+  --bg: #f5f3ff; /* fallback; light mode paints the dawn gradient on body */
+  --surface: #ffffff;
+  --text: #334155;
+  --muted: #475569;
+  --heading: #6d28d9;
+  --link: #be185d;
+  --link-hover: #9d174d;
+  --accent: #be185d;
+  --border: #e2e8f0;
+  --divider: #e9d5ff;
+  --grid-line: rgba(109, 40, 217, 0.3);
+  --grid-line-width: 1.5px;
+  --focus: #6d28d9;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  --header-bg: #ffffff;
+  --header-text: #2e1065;
+  --btn-bg: rgba(255, 255, 255, 0.5);
+  --btn-text: #2e1065;
+  --btn-border: #2e1065;
+  --btn-hover-bg: #ffffff;
+  --btn-hover-text: #2e1065;
+
+  --glow-text: none;
+  --glow-box: none;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0d0b1e;
+  --surface: #1a1433;
+  --text: #ece8ff;
+  --muted: #b8b0d9;
+  --heading: #2de2e6;
+  --link: #ff71ce;
+  --link-hover: #ffa8e2;
+  --accent: #fdf500;
+  --border: #3b2f6b;
+  --divider: rgba(255, 113, 206, 0.35);
+  --grid-line: rgba(255, 113, 206, 0.45);
+  --grid-line-width: 2px;
+  --focus: #fdf500;
+  --shadow: 0 0 0 1px var(--border), 0 0 2rem rgba(188, 19, 254, 0.15);
+
+  --header-bg: #0d0b1e;
+  --header-text: #ffffff;
+  --btn-bg: rgba(13, 11, 30, 0.7);
+  --btn-text: #ffffff;
+  --btn-border: #ffffff;
+  --btn-hover-bg: rgba(255, 113, 206, 0.2);
+  --btn-hover-text: #ffffff;
+
+  --neon: #bc13fe;
+  --glow-text: 0 0 4px #fff, 0 0 10px #fff, 0 0 38px var(--heading), 0 0 73px var(--heading);
+  --glow-box: 0 0 .2rem #fff, 0 0 2rem var(--neon), 0 0 0.8rem var(--neon), inset 0 0 1.3rem var(--neon);
+}
+
+/* ---------- Daytime extras (light only) ---------- */
+
+/* Dawn gradient over the whole page: the daytime version of the neon sunset.
+   The header is see-through so there's no seam between it and the content. */
+:root:not(.dark) body {
+  background: linear-gradient(to bottom, #fff7ed 0%, #fce7f3 30%, #ede9fe 65%, #e0f2fe 100%) fixed;
+}
+
+/* See-through header with no bottom line, so it melts into the page */
+:root:not(.dark) .page-header {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* No card in light mode: content sits straight on the page */
+:root:not(.dark) .main-content {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Flat outline buttons; hover tints them lavender */
+:root:not(.dark) .btn:hover {
+  background-color: rgba(237, 233, 254, 0.9);
+}
+/* Theme toggle matches the soft nav buttons */
+:root:not(.dark) .theme-toggle {
+  color: var(--btn-text);
+  background-color: var(--btn-bg);
+  border: 2px solid var(--btn-border);
+}
+:root:not(.dark) .theme-toggle:hover {
+  background-color: rgba(237, 233, 254, 0.9);
+}
+
+/* Current page is filled solid, so it differs by shape as well as colour */
+:root:not(.dark) .btn[aria-current="page"] {
+  color: #ffffff;
+  background-color: #2e1065;
+}
+
+/* ---------- Header perspective grid (both themes; colour from --grid-line) ---------- */
+
+.page-header {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 60%;
+  background:
+    repeating-linear-gradient(to right, var(--grid-line) 0 var(--grid-line-width), transparent var(--grid-line-width) 60px),
+    repeating-linear-gradient(to bottom, var(--grid-line) 0 var(--grid-line-width), transparent var(--grid-line-width) 40px);
+  transform: perspective(300px) rotateX(60deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
+/* ---------- 80s neon extras (dark only, all decorative) ---------- */
+
+/* Synthwave sunset with a perspective grid at the bottom of the header */
+.dark .page-header {
+  background: linear-gradient(to bottom, #0d0b1e 0%, #1f0b45 55%, #4a1366 100%);
+  border-bottom: 2px solid var(--link);
+  box-shadow: 0 0 1.5rem var(--link);
+}
+
+.dark .project-name {
+  color: #fff;
+  text-shadow: var(--glow-text);
+  animation: neon-breathe 2.5s ease-in-out infinite alternate;
+}
+
+.dark .main-content h1,
+.dark .main-content h2 {
+  text-shadow: 0 0 8px rgba(45, 226, 230, 0.6);
+}
+
+/* Faint CRT scanlines over the whole page */
+.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 3px);
+}
+
+/* Slow neon pulse (2.5s cycle) — well under the 3-flashes-per-second limit */
+@keyframes neon-breathe {
+  from {
+    text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 14px var(--heading), 0 0 28px var(--heading);
+  }
+  to {
+    text-shadow: 0 0 4px #fff, 0 0 12px #fff, 0 0 40px var(--heading), 0 0 80px var(--heading), 0 0 120px var(--heading);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark .project-name {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .dark body::before {
+    display: none;
+  }
+}
+
+/* ---------- Easter eggs (see javascript/easter-eggs.js) ---------- */
+
+/* Arcade mode (Konami code): striped retro sun + scrolling grid */
+.arcade.dark .page-header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: 12%;
+  width: min(14rem, 45vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #fdf500 0%, #ff71ce 55%, #bc13fe 100%);
+  opacity: 0.7;
+  box-shadow: 0 0 4rem rgba(255, 113, 206, 0.6);
+  /* Solid top half, horizontal stripes across the bottom half */
+  mask-image:
+    linear-gradient(to bottom, #000 50%, transparent 50%),
+    repeating-linear-gradient(to bottom, #000 0 12px, transparent 12px 18px);
+  transform: translateX(-50%);
+  animation: sun-rise 2s ease-out;
+}
+
+.arcade.dark .page-header::after {
+  animation: grid-scroll 0.8s linear infinite;
+}
+
+/* Arcade mode carried over from another page: sun is already up */
+.arcade-restored.dark .page-header::before {
+  animation: none;
+}
+
+/* Keep the tagline readable over the sun */
+.arcade.dark .project-tagline {
+  color: #ffffff;
+  text-shadow: 0 1px 2px #0d0b1e, 0 0 8px #0d0b1e;
+}
+
+@keyframes sun-rise {
+  from { transform: translate(-50%, 60%); opacity: 0; }
+  to { transform: translateX(-50%); opacity: 0.7; }
+}
+
+@keyframes grid-scroll {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, 0 40px; }
+}
+
+/* Status message */
+.egg-toast {
+  position: fixed;
+  z-index: 2500;
+  left: 50%;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--link);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem var(--link);
+  transform: translate(-50%, 1rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s; }
+  .egg-toast:empty {
+    display: none; }
+  .egg-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0); }
+
+/* Magic sprinkles (click the name 5 times) */
+.sprinkle {
+  position: fixed;
+  z-index: 2500;
+  font-size: 1.5rem;
+  line-height: 1;
+  pointer-events: none;
+  animation: sprinkle-burst 1.2s ease-out forwards;
+}
+
+@keyframes sprinkle-burst {
+  from { transform: translate(-50%, -50%) scale(0.4); opacity: 1; }
+  70% { opacity: 1; }
+  to { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(var(--r)) scale(1); opacity: 0; }
+}
+
+/* Reduced motion: no rising, scrolling or flying — things simply appear and fade */
+@media (prefers-reduced-motion: reduce) {
+  .arcade.dark .page-header::before,
+  .arcade.dark .page-header::after {
+    animation: none;
+  }
+  .sprinkle {
+    animation-name: sprinkle-fade;
+  }
+}
+
+@keyframes sprinkle-fade {
+  from { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))); opacity: 0; }
+  30% { opacity: 1; }
+  to { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))); opacity: 0; }
+}

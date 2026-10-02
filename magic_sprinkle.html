@@ -1,48 +1,64 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<!--
 
+   ██████╗ ██████╗
+  ██╔═══██╗██╔══██╗
+  ██║   ██║██████╔╝
+  ██║   ██║██╔══██╗
+  ╚██████╔╝██████╔╝
+   ╚═════╝ ╚═════╝
+
+  Hello, fellow developer 👋
+
+  Thanks for peeking under the hood. This site is hand-written HTML and CSS
+  with a sprinkle of JavaScript: no frameworks, no build step.
+
+  Psst... try  ↑ ↑ ↓ ↓ ← → ← → B A
+  Source: https://github.com/OBaddeley/main_site
+
+-->
+<html lang="en-NZ">
   <head>
     <meta charset="UTF-8">
-    <title>Magic Sprinkler</title>
+    <title>Magic Sprinkler – Olivia Baddeley</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self'; font-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Runs before first paint so the theme doesn't flash -->
+    <script src="javascript/theme-init.js"></script>
+    <link rel="stylesheet" href="stylesheets/theme.css">
+    <link rel="stylesheet" href="stylesheets/stylesheet.css">
     <script src="javascript/dark-light-toggle.js" defer></script>
+    <script src="javascript/easter-eggs.js" defer></script>
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Olivia Baddeley</h1>
-      <h2 class="project-tagline">Developer</h2>
-      <a href="https://obaddeley.github.io/main_site" class="btn">Home</a>
-      <a href="https://obaddeley.github.io/main_site/projects.html" class="btn">Projects</a>
-      <a href="https://obaddeley.github.io/main_site/blog.html" class="btn">Blog</a>
-    </section>
-    <a id="theme-toggle" class="theme-toggle">☾</a>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Dark theme" aria-pressed="false">☾</button>
 
-    <section class="main-content">
-      <h1 class="project-name">Magic Sprinkler</h1>
+    <header class="page-header">
+      <p class="project-name">Olivia Baddeley</p>
+      <p class="project-tagline">Developer</p>
+      <nav aria-label="Main">
+        <a href="index.html" class="btn">Home</a>
+        <a href="projects.html" class="btn" aria-current="page">Projects</a>
+        <a href="contact.html" class="btn">Contact</a>
+        <a href="blog.html" class="btn">Blog</a>
+      </nav>
+    </header>
+
+    <main id="content" class="main-content">
+      <h1>Magic Sprinkler</h1>
       <p>A little bit of magic sprinkled to your feed.</p>
-      <p>Based on <a href="https://maetl.net/notes/storyboard/tiny-woodlands"> tiny woodland</a></p>
+      <p>Based on <a href="https://maetl.net/notes/storyboard/tiny-woodlands">tiny woodland</a></p>
       <p>Created as I was learning about twitter bots.</p>
       <p>It would tweet a random magic sprinkle every day.</p>
       <p>This bot is no longer active.</p>
 
-      <picture>
-        <source
-          srcset="images/magic-sprinkler.png 480w, images/magic-sprinkler.png 800w, images/magic-sprinkler.png 1200w"
-          sizes="(max-width: 600px) 400px, 600px"
-          type="image/jpeg" />
-        <img src="images/magic-sprinkler.png" alt="Magic Sprinkler" />
-      </picture>
-    </section>
+      <img src="images/magic-sprinkler.jpg" width="598" height="1259" loading="lazy" decoding="async" alt="Screenshot of the Magic dust sprinkle Twitter profile (@magicsprinkler). Each tweet is a grid of emoji such as flowers, rainbows, unicorns, fairies, ladybirds and mushrooms.">
 
-    <section class="main-content">
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/OBaddeley/main_site">This site</a> is maintained by <a href="https://github.com/OBaddeley">OBaddeley</a></span>
       </footer>
-    </section>
+    </main>
   </body>
 </html>
