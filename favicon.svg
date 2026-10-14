@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="sun" x1="0" y1="4" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fdf500"/>
+      <stop offset="0.55" stop-color="#ff71ce"/>
+      <stop offset="1" stop-color="#bc13fe"/>
+    </linearGradient>
+    <clipPath id="tile">
+      <rect width="32" height="32" rx="6"/>
+    </clipPath>
+    <!-- Solid top, then bands with dark gaps across the bottom of the sun -->
+    <clipPath id="bands">
+      <rect y="0" width="32" height="17"/>
+      <rect y="18.5" width="32" height="2.25"/>
+      <rect y="22.25" width="32" height="2"/>
+      <rect y="25.75" width="32" height="2.25"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="32" height="32" fill="#0d0b1e"/>
+    <circle cx="16" cy="16" r="12" fill="url(#sun)" clip-path="url(#bands)"/>
+  </g>
+</svg>
